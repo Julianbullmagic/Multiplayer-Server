@@ -6,7 +6,7 @@ const app = express();
 const server = http.createServer(app);
 const io = require("socket.io")(server, {
   cors: {
-    origin: "xhttps://launch.playcanvas.com",
+    origin: "https://launch.playcanvas.com",
     methods: ["GET", "POST"]
   }
 });
