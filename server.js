@@ -49,7 +49,6 @@ io.on('connection', (socket) => {
       }
       }
     for(let player of players){
-        if(!connectedSockets.includes())
         if(player.socket==data.socket){
           player=data
         }
@@ -69,7 +68,13 @@ io.on('connection', (socket) => {
 
     // Remove the disconnected socket ID from the array
     connectedSockets.splice(connectedSockets.indexOf(socket.id), 1);
-
+    let newplayers=[]
+    for (let player of players){
+      if(socket.id!==player.id){
+        newplayers.push(player)
+      }
+      players=newplayers
+    }
     // Broadcast the updated array to all connected clients
     io.emit('connectedUsers', connectedSockets);
   });
