@@ -1,11 +1,14 @@
 const express = require('express');
 const http = require('http');
 const socketIO = require('socket.io');
-const cors = require('cors'); // Add this line
 
 const app = express();
-app.use(cors());
-const server = http.createServer(app);
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Methods', 'GET, POST');
+  res.header('Access-Control-Allow-Headers', 'Content-Type');
+  next();
+});const server = http.createServer(app);
 const io = socketIO(server);
 
 // Array to store connected socket IDs
