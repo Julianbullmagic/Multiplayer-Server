@@ -53,7 +53,7 @@ io.on('connection', (socket) => {
           player=data
         }
       }
-    console.log(players)
+    console.log(players,connectedSockets)
   });
 
   socket.on('message', (data) => {
