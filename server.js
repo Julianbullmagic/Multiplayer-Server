@@ -23,11 +23,6 @@ let players=[]
 app.get('/', (req, res) => {
   res.send('Server is running');
 });
-setInterval(sendState, 40)
-
-function sendState(){
-  io.emit('state update broadcast', players);
-}
 // Socket.IO connection handling
 io.on('connection', (socket) => {
   console.log('A user connected');
@@ -53,8 +48,7 @@ io.on('connection', (socket) => {
           player=data
         }
       }
-    console.log(players,playersockets,connectedSockets)
-  });
+        });
 
   socket.on('message', (data) => {
     console.log('Message from client:', data);
@@ -80,7 +74,10 @@ io.on('connection', (socket) => {
     io.emit('connectedUsers', connectedSockets);
   });
 });
-
+setInterval(sendState, 40)
+function sendState(){
+  io.emit('state update broadcast', players);
+}
 // Start the server
 const PORT = process.env.PORT || 3000;
 server.listen(PORT, () => {
