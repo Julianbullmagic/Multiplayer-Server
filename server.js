@@ -2,9 +2,10 @@ const express = require('express');
 const http = require('http');
 const socketIO = require('socket.io');
 const app = express();
+const server = http.createServer(app);
 const io = require("socket.io")(server, {
   cors: {
-    origin: "https://launch.playcanvas.com",
+    origin: "xhttps://launch.playcanvas.com",
     methods: ["GET", "POST"]
   }
 });
@@ -14,10 +15,6 @@ app.use(function(req,res,next){
   res.header("Access-Control-Allow-Headers","Origin,X-Requested-With,Content-Type,Accept")
   next();
 })
-
-const server = http.createServer(app);
-const io = socketIO(server);
-
 // Array to store connected socket IDs
 const connectedSockets = [];
 
