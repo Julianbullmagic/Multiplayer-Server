@@ -17,13 +17,17 @@ app.use(function(req,res,next){
   next();
 })
 // Array to store connected socket IDs
-const connectedSockets = [];
-
+let connectedSockets = [];
+let players=[]
 // Set up a simple route (optional)
 app.get('/', (req, res) => {
   res.send('Server is running');
 });
+setInterval(sendState, 40)
 
+function sendState(){
+  io.emit('state update broadcast', players);
+}
 // Socket.IO connection handling
 io.on('connection', (socket) => {
   console.log('A user connected');
@@ -38,7 +42,14 @@ io.on('connection', (socket) => {
   // Handle messages from the client
 
   socket.on('update state', (data) => {
-    console.log('State update from client:', data);
+      if(!connectedSockets.includes(data.socket)){
+        players.push(data)
+      }
+    for(let player of players){
+      if(player.socket==data.socket){
+        player=data
+      }
+    }
   });
 
   socket.on('message', (data) => {
