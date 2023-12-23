@@ -35,6 +35,11 @@ io.on('connection', (socket) => {
   io.emit('connectedUsers', connectedSockets);
 
   // Handle messages from the client
+
+  socket.on('update state', (data) => {
+    console.log('State update from client:', data);
+  });
+
   socket.on('message', (data) => {
     console.log('Message from client:', data);
 
