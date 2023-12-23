@@ -50,11 +50,11 @@ io.on('connection', (socket) => {
         player=data
       }
     }
+    console.log(players)
   });
 
   socket.on('message', (data) => {
     console.log('Message from client:', data);
-
     // Broadcast the message to all connected clients
     io.emit('message', data);
   });
