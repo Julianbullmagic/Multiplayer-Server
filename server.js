@@ -42,7 +42,8 @@ io.on('connection', (socket) => {
   // Handle messages from the client
 
   socket.on('update state', (data) => {
-      if(!connectedSockets.includes(data.socket)){
+      players=players.map(item=>item.socket)
+      if(!players.includes(data.socket)){
         players.push(data)
       }
     for(let player of players){
