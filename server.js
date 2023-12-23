@@ -65,17 +65,17 @@ io.on('connection', (socket) => {
   // Handle disconnection
   socket.on('disconnect', () => {
     console.log('User disconnected',socket.id);
-    let playersockets=players.map(item=>item.socket)
-    connectedSockets=playersockets
-    // Remove the disconnected socket ID from the array
     connectedSockets.splice(connectedSockets.indexOf(socket.id), 1);
+    // Remove the disconnected socket ID from the array
     let newplayers=[]
     for (let player of players){
-      if(socket.id!==player.id){
+      if(socket.id!==player.socket){
         newplayers.push(player)
       }
       players=newplayers
     }
+    let playersockets=players.map(item=>item.socket)
+    connectedSockets=playersockets
     // Broadcast the updated array to all connected clients
     io.emit('connectedUsers', connectedSockets);
   });
