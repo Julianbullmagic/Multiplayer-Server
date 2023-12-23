@@ -43,7 +43,7 @@ io.on('connection', (socket) => {
 
   socket.on('update state', (data) => {
       playersockets=players.map(item=>item.socket)
-      if(!playersockets.includes(data.socket)&&!connectedSockets.includes(data.socket)){
+      if(!playersockets.includes(data.socket)){
         if(data.socket){
         players.push(data)
       }
@@ -53,7 +53,7 @@ io.on('connection', (socket) => {
           player=data
         }
       }
-    console.log(players,connectedSockets)
+    console.log(players,playersockets,connectedSockets)
   });
 
   socket.on('message', (data) => {
@@ -64,7 +64,7 @@ io.on('connection', (socket) => {
 
   // Handle disconnection
   socket.on('disconnect', () => {
-    console.log('User disconnected');
+    console.log('User disconnected',socket.id);
 
     // Remove the disconnected socket ID from the array
     connectedSockets.splice(connectedSockets.indexOf(socket.id), 1);
