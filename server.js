@@ -30,6 +30,7 @@ io.on('connection', (socket) => {
 
   // Store the socket ID in the array
   connectedSockets.push(socket.id);
+  socket.emit('your socket', socket.id);
 
   // Broadcast the updated array to all connected clients
   io.emit('connectedUsers', connectedSockets);
