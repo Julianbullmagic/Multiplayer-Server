@@ -48,6 +48,8 @@ io.on('connection', (socket) => {
         players.push(data)
       }
       }
+      playersockets=players.map(item=>item.socket)
+      connectedSockets=playersockets
     for(let player of players){
         if(player.socket==data.socket){
           player=data
