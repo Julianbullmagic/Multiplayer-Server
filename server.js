@@ -50,7 +50,9 @@ io.on('connection', (socket) => {
     for(let player of players){
         if(player.socket===data.socket){
           console.log("same")
-          player=data
+          player.x=data.x
+          player.y=data.y
+          player.z=data.z
         }
       }
       console.log(players,"current players")
