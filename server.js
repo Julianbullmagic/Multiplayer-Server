@@ -4,6 +4,7 @@ const socketIO = require('socket.io');
 var cors = require('cors')
 const app = express();
 const server = http.createServer(app);
+const { mac } = require('address');
 const io = require("socket.io")(server, {
   cors: {
     origin: "https://launch.playcanvas.com",
@@ -19,6 +20,7 @@ app.use(function(req,res,next){
 // Array to store connected socket IDs
 let connectedSockets = [];
 let players=[]
+
 // Set up a simple route (optional)
 app.get('/', (req, res) => {
   res.send('Server is running');
@@ -75,6 +77,8 @@ io.on('connection', (socket) => {
   });
 });
 setInterval(sendState, 40)
+setInterval(console.log(players), 2000)
+
 function sendState(){
   io.emit('state update broadcast', players);
 }
