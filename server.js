@@ -80,11 +80,11 @@ io.on('connection', (socket) => {
   });
 });
 setInterval(sendState, 33)
-// setInterval(checkPlayers, 2000)
+setInterval(checkPlayers, 2000)
 
-// function checkPlayers(){
-// console.log(players,"players")
-// }
+function checkPlayers(){
+console.log(players,"players")
+}
 
 function sendState(){
   io.emit('state update broadcast', players);
