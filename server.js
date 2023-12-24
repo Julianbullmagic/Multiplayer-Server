@@ -46,21 +46,12 @@ io.on('connection', (socket) => {
         players.push(data)
       }
       }
-      // let newplayersockets=[]
-      // let newplayers=[]
-      // for (let player of players){
-      //   if(!newplayersockets.includes(player.socket)){
-      //     newplayers.push(player)
-      //   }
-      //   newplayersockets.push(player.socket)
-      // }
-      // players=newplayers
-      console.log(players,"current players")
     for(let player of players){
         if(player.socket==data.socket){
           player=data
         }
       }
+      console.log(players,"current players")
         });
 
   socket.on('message', (data) => {
