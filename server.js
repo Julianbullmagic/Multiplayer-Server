@@ -45,9 +45,10 @@ io.on('connection', (socket) => {
         players.push(data)
       }
       }
-    for(let player of players){
       console.log(player,data)
+    for(let player of players){
         if(player.socket==data.socket){
+          console.log(player,data)
           player=data
         }
       }
@@ -78,11 +79,11 @@ io.on('connection', (socket) => {
   });
 });
 setInterval(sendState, 40)
-setInterval(checkPlayers, 2000)
+// setInterval(checkPlayers, 2000)
 
-function checkPlayers(){
-console.log(players,"players")
-}
+// function checkPlayers(){
+// console.log(players,"players")
+// }
 
 function sendState(){
   io.emit('state update broadcast', players);
