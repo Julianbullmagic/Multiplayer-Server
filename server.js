@@ -55,7 +55,8 @@ io.on('connection', (socket) => {
       }
       players=newplayers
       for(let player of players)
-      console.log(players,data)
+      console.log(players,"current players")
+      console.log(data,"incoming player state")
     for(let player of players){
         if(player.socket==data.socket){
           console.log(player,data)
