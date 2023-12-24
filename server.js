@@ -46,6 +46,7 @@ io.on('connection', (socket) => {
         players.push(data)
       }
       }
+      console.log(data,"DATA")
     for(let player of players){
         if(player.socket==data.socket){
           player=data
