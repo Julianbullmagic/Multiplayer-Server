@@ -77,7 +77,11 @@ io.on('connection', (socket) => {
   });
 });
 setInterval(sendState, 40)
-setInterval(console.log(players), 2000)
+setInterval(checkPlayers, 2000)
+
+function checkPlayers(){
+console.log(players,"players")
+}
 
 function sendState(){
   io.emit('state update broadcast', players);
