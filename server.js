@@ -45,16 +45,15 @@ io.on('connection', (socket) => {
         players.push(data)
       }
       }
-      let newplayersockets=[]
-      let newplayers=[]
-      for (let player of players){
-        if(!newplayersockets.includes(player.socket)){
-          newplayers.push(player)
-        }
-        newplayersockets.push(player.socket)
-      }
-      players=newplayers
-      for(let player of players)
+      // let newplayersockets=[]
+      // let newplayers=[]
+      // for (let player of players){
+      //   if(!newplayersockets.includes(player.socket)){
+      //     newplayers.push(player)
+      //   }
+      //   newplayersockets.push(player.socket)
+      // }
+      // players=newplayers
       console.log(players,"current players")
       console.log(data,"incoming player state")
     for(let player of players){
