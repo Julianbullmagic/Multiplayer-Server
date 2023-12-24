@@ -40,6 +40,7 @@ io.on('connection', (socket) => {
 
   socket.on('update state', (data) => {
       let playersockets=players.map(item=>item.socket)
+
       if(!playersockets.includes(data.socket)){
         if(data.socket){
         players.push(data)
@@ -55,10 +56,8 @@ io.on('connection', (socket) => {
       // }
       // players=newplayers
       console.log(players,"current players")
-      console.log(data,"incoming player state")
     for(let player of players){
         if(player.socket==data.socket){
-          console.log(player,data)
           player=data
         }
       }
