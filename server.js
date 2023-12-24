@@ -79,7 +79,7 @@ io.on('connection', (socket) => {
     io.emit('connectedUsers', connectedSockets);
   });
 });
-setInterval(sendState, 25)
+setInterval(sendState, 33)
 // setInterval(checkPlayers, 2000)
 
 // function checkPlayers(){
