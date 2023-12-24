@@ -48,7 +48,8 @@ io.on('connection', (socket) => {
       }
       console.log(data,"DATA")
     for(let player of players){
-        if(player.socket==data.socket){
+        if(player.socket===data.socket){
+          console.log("same")
           player=data
         }
       }
